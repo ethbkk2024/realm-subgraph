@@ -108,9 +108,9 @@ dataSources:
     name: GameSystem
     network: base-sepolia
     source:
-      address: "0xBeFcDD2A3f2E298EdaC1dED47F1705B175E5fD42"
+      address: "0x280474b946C3C7931f6CBEc74a4a43bC3B5C6996"
       abi: GameSystem
-      startBlock: 17981472
+      startBlock: 17993680
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
