@@ -48,3 +48,118 @@ dataSources:
         - event: Unpaused(address)
           handler: handleUnpaused
       file: ./src/realm-token.ts
+  - kind: ethereum
+    name: NFT
+    network: base-sepolia
+    source:
+      address: "0xDEbD08dD538b541093b5aCdCa52a2040c0aB9D1A"
+      abi: NFT
+      startBlock: 17982290
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ApprovalForAll
+        - CharacterLevelUp
+        - CharacterLootBoxOpened
+        - CharacterMinted
+        - FeeCollected
+        - GameSystemUpdated
+        - ItemEquipped
+        - ItemMinted
+        - LootBoxOpened
+        - NFTOwnershipTransferred
+        - TransferBatch
+        - TransferSingle
+        - URI
+      abis:
+        - name: NFT
+          file: ./abis/NFT.json
+      eventHandlers:
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: CharacterLevelUp(indexed address,indexed uint256,uint256,uint256)
+          handler: handleCharacterLevelUp
+        - event: CharacterLootBoxOpened(indexed address,uint8,uint256)
+          handler: handleCharacterLootBoxOpened
+        - event: CharacterMinted(indexed address,indexed uint256,uint8,uint256)
+          handler: handleCharacterMinted
+        - event: FeeCollected(uint256,indexed address,uint256)
+          handler: handleFeeCollected
+        - event: GameSystemUpdated(indexed address,uint256)
+          handler: handleGameSystemUpdated
+        - event: ItemEquipped(indexed address,indexed uint256,indexed uint256,uint256)
+          handler: handleItemEquipped
+        - event: ItemMinted(indexed address,indexed uint256,uint256,uint256)
+          handler: handleItemMinted
+        - event: LootBoxOpened(indexed address,indexed uint256,uint256,uint256)
+          handler: handleLootBoxOpened
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: URI(string,indexed uint256)
+          handler: handleURI
+      file: ./src/nft.ts
+  - kind: ethereum
+    name: GameSystem
+    network: base-sepolia
+    source:
+      address: "0xBeFcDD2A3f2E298EdaC1dED47F1705B175E5fD42"
+      abi: GameSystem
+      startBlock: 17981472
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BattleCompleted
+        - BattleStarted
+        - ForceDistributionExecuted
+        - GameInitialized
+        - GameServerChanged
+        - GameStateChanged
+        - MultiplierUpdated
+        - GameSystemOwnershipTransferred
+        - PlayerRankChanged
+        - PlayerScoreUpdated
+        - QuestCompleted
+        - QuestStarted
+        - RewardPoolUpdated
+        - WeeklyRewardsDistributed
+      abis:
+        - name: GameSystem
+          file: ./abis/GameSystem.json
+      eventHandlers:
+        - event: BattleCompleted(indexed uint256,indexed address,uint256,bool,uint256,uint256)
+          handler: handleBattleCompleted
+        - event: BattleStarted(indexed uint256,indexed address,uint256,uint256,uint256)
+          handler: handleBattleStarted
+        - event: ForceDistributionExecuted(indexed uint256,indexed address,uint256,uint256)
+          handler: handleForceDistributionExecuted
+        - event: GameInitialized(indexed address,address,address)
+          handler: handleGameInitialized
+        - event: GameServerChanged(indexed address)
+          handler: handleGameServerChanged
+        - event: GameStateChanged(bool)
+          handler: handleGameStateChanged
+        - event: MultiplierUpdated(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleMultiplierUpdated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PlayerRankChanged(indexed address,uint256,uint256,uint256)
+          handler: handlePlayerRankChanged
+        - event: PlayerScoreUpdated(indexed address,uint256,uint256,uint256)
+          handler: handlePlayerScoreUpdated
+        - event: QuestCompleted(indexed address,uint256,uint256,uint256)
+          handler: handleQuestCompleted
+        - event: QuestStarted(indexed address,uint256,uint256)
+          handler: handleQuestStarted
+        - event: RewardPoolUpdated(uint256,uint256,uint256)
+          handler: handleRewardPoolUpdated
+        - event: WeeklyRewardsDistributed(indexed uint256,uint256,address[],uint256[])
+          handler: handleWeeklyRewardsDistributed
+      file: ./src/game-system.ts

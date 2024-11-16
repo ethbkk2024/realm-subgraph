@@ -85,3 +85,284 @@ type Unpaused @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type ApprovalForAll @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  operator: Bytes! # address
+  approved: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CharacterLevelUp @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  characterId: BigInt! # uint256
+  newLevel: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CharacterLootBoxOpened @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  characterType: Int! # uint8
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CharacterMinted @entity(immutable: true) {
+  id: Bytes!
+  to: Bytes! # address
+  characterId: BigInt! # uint256
+  characterType: Int! # uint8
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FeeCollected @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  gameSystem: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameSystemUpdated @entity(immutable: true) {
+  id: Bytes!
+  newGameSystem: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ItemEquipped @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  characterId: BigInt! # uint256
+  itemId: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ItemMinted @entity(immutable: true) {
+  id: Bytes!
+  to: Bytes! # address
+  itemId: BigInt! # uint256
+  amount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LootBoxOpened @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  tokenId: BigInt! # uint256
+  amount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferBatch @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  ids: [BigInt!]! # uint256[]
+  values: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferSingle @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  NFT_id: BigInt! # uint256
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type URI @entity(immutable: true) {
+  id: Bytes!
+  value: String! # string
+  NFT_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type BattleCompleted @entity(immutable: true) {
+  id: Bytes!
+  battleId: BigInt! # uint256
+  player: Bytes! # address
+  characterId: BigInt! # uint256
+  victory: Boolean! # bool
+  rewardAmount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BattleStarted @entity(immutable: true) {
+  id: Bytes!
+  battleId: BigInt! # uint256
+  player: Bytes! # address
+  characterId: BigInt! # uint256
+  enemyId: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ForceDistributionExecuted @entity(immutable: true) {
+  id: Bytes!
+  weekNumber: BigInt! # uint256
+  triggeredBy: Bytes! # address
+  totalDistributed: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameInitialized @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  realmToken: Bytes! # address
+  nftContract: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameServerChanged @entity(immutable: true) {
+  id: Bytes!
+  newServer: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameStateChanged @entity(immutable: true) {
+  id: Bytes!
+  isPaused: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MultiplierUpdated @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  baseMultiplier: BigInt! # uint256
+  stakingMultiplier: BigInt! # uint256
+  nftMultiplier: BigInt! # uint256
+  activityMultiplier: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameSystemOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlayerRankChanged @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  weekNumber: BigInt! # uint256
+  newRank: BigInt! # uint256
+  score: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlayerScoreUpdated @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  weekNumber: BigInt! # uint256
+  newScore: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type QuestCompleted @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  characterId: BigInt! # uint256
+  reward: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type QuestStarted @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes! # address
+  characterId: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardPoolUpdated @entity(immutable: true) {
+  id: Bytes!
+  newTotal: BigInt! # uint256
+  added: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WeeklyRewardsDistributed @entity(immutable: true) {
+  id: Bytes!
+  weekNumber: BigInt! # uint256
+  totalRewards: BigInt! # uint256
+  winners: [Bytes!]! # address[]
+  amounts: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
